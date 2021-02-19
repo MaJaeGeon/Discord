@@ -1,12 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:vm="clr-namespace:Discord.ViewModels">
+                    xmlns:vm="clr-namespace:Discord.ViewModels"
+                    xmlns:conv="clr-namespace:Discord.Converter">
     <vm:ViewModelLocator xmlns:vm="clr-namespace:Discord.ViewModels" x:Key="Locator" />
+    <conv:IsNullConverter x:Key="isNullConverter"/>
 
     <!-- Buttons -->
     <Style TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
 
@@ -49,22 +50,29 @@
     <!-- Window Style -->
     <Style x:Key="WindowStyle" TargetType="{x:Type Window}">
         <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="BorderThickness" Value="10"/>
 
         <Setter Property="MinWidth" Value="950"/>
         <Setter Property="MinHeight" Value="500"/>
         <Setter Property="Width" Value="950"/>
         <Setter Property="Height" Value="500"/>
 
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome CaptionHeight="0"/>
+            </Setter.Value>
+        </Setter>
+        
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate>
-                    <Grid x:Name="WindowDragBar">
+                <ControlTemplate TargetType="Window">
+                    <Grid x:Name="WindowDragBar" Background="#202225">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="22"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <Border Grid.Row="0" Background="#202225" DataContext="{Binding Source={StaticResource Locator}, Path=Window}">
+                        <Border Grid.Row="0" DataContext="{Binding Source={StaticResource Locator}, Path=Window}">
                             <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
                                 <Button x:Name="WindowMinimizeButton" Width="25" Style="{StaticResource WindowButton}">
                                     <!-- Command="{Binding MinimizeCommand}" -->
@@ -83,18 +91,7 @@
                             </StackPanel>
                         </Border>
 
-                        <AdornerDecorator Grid.Row="1">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="70"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Border Grid.Column="1" Background="#2F3136" CornerRadius="10 0 0 0">
-                                    <ContentPresenter />
-                                </Border>
-                            </Grid>
-                        </AdornerDecorator>
+                        <ContentPresenter Grid.Row="1"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

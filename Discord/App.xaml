@@ -12,6 +12,7 @@
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/GlobalStyle.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/ServerListStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             

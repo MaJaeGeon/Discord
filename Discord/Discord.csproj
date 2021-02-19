@@ -70,7 +70,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\WindowViewModel.cs" />
+    <Compile Include="Converter\IsNullConverter.cs" />
+    <Compile Include="Models\Server.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="App.xaml.cs">
@@ -114,13 +115,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Styles\ServerListStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Resource Include="Resources\Images\discord_logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\close.png" />

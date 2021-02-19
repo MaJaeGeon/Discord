@@ -18,17 +18,11 @@ namespace Discord.ViewModels
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<WindowViewModel>();
         }
 
         public MainViewModel Main
         {
             get { return ServiceLocator.Current.GetInstance<MainViewModel>(); }
-        }
-
-        public WindowViewModel Window
-        {
-            get { return ServiceLocator.Current.GetInstance<WindowViewModel>(); }
         }
 
         public static void Cleanup()
