@@ -8,16 +8,6 @@
         xmlns:windows="clr-namespace:Discord"
         mc:Ignorable="d"
         Title="MainWindow" DataContext="{Binding Source={StaticResource Locator}, Path=Main}" Style="{StaticResource WindowStyle}">
-    <windows:WindowBase.Resources>
-        <models:Server x:Key="ServerList_Home" Name="Home" ImageUrl="/Resources/Images/discord_logo.png"/>
-        
-        <models:ServerList x:Key="serverList">
-            <models:Server Name="Test1" ImageUrl="https://avatars.githubusercontent.com/u/59637845"/>
-            <models:Server Name="Test2" ImageUrl="https://avatars.githubusercontent.com/u/59637845"/>
-            <models:Server Name="Test3"/>
-        </models:ServerList>
-    </windows:WindowBase.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
@@ -31,22 +21,27 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <RadioButton Grid.Row="0" GroupName="ServerList" Style="{StaticResource ServerListItem}" IsChecked="True" DataContext="{StaticResource ServerList_Home}"/>
+            <RadioButton Grid.Row="0" GroupName="ServerList" Style="{StaticResource ServerListItem}" DataContext="{StaticResource ServerList_Home}" Checked="HomeButton_Checked"/>
 
             <Border Grid.Row="1" CornerRadius="1" Background="#2D2F32" Margin="10" Width="30" Height="2"/>
 
             <ItemsControl Grid.Row="2" ItemsSource="{StaticResource serverList}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <RadioButton GroupName="ServerList" Style="{StaticResource ServerListItem}" Margin="0 0 0 10">
-
-                        </RadioButton>
+                        <RadioButton GroupName="ServerList" Style="{StaticResource ServerListItem}" Margin="0 0 0 10" Checked="ServerButton_Checked" CommandParameter="{Binding ElementName=ServerItemName, Path=Text}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Grid>
         
         <Border Grid.Column="1" Background="#2F3136" CornerRadius="10 0 0 0">
+            <Frame x:Name="ServerView" Source="HomePage.xaml">
+                <Frame.Template>
+                    <ControlTemplate TargetType="Frame">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Frame.Template>
+            </Frame>
         </Border>
     </Grid>
 </windows:WindowBase>
