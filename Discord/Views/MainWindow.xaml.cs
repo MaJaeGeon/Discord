@@ -24,21 +24,21 @@ namespace Discord.Views
             InitializeComponent();
         }
 
-        private void ServerButton_Checked(object sender, RoutedEventArgs e)
-        {
-            ServerView.Source = new Uri("ServerPage.xaml", UriKind.Relative);
-        }
+        //private void ServerButton_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    ServerView.Source = new Uri("ServerPage.xaml", UriKind.Relative);
+        //}
 
-        private void HomeButton_Checked(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                ServerView.Source = new Uri("HomePage.xaml", UriKind.Relative);
-            }
-            catch
-            {
-                return;
-            }
-        }
+        //private void HomeButton_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        ServerView.Source = new Uri("HomePage.xaml", UriKind.Relative);
+        //    }
+        //    catch
+        //    {
+        //        return;
+        //    }
+        //}
     }
 }

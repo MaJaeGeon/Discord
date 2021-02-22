@@ -7,7 +7,7 @@
         xmlns:models="clr-namespace:Discord.Models"
         xmlns:windows="clr-namespace:Discord"
         mc:Ignorable="d"
-        Title="MainWindow" DataContext="{Binding Source={StaticResource Locator}, Path=Main}" Style="{StaticResource WindowStyle}">
+        x:Name="Window" Title="MainWindow" DataContext="{Binding Source={StaticResource Locator}, Path=Main}" Style="{StaticResource WindowStyle}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
@@ -21,24 +21,27 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <RadioButton Grid.Row="0" GroupName="ServerList" Style="{StaticResource ServerListItem}" DataContext="{StaticResource ServerList_Home}" Checked="HomeButton_Checked"/>
+            <!-- Home Button -->
+            <RadioButton Grid.Row="0" Command="{Binding DataContext.ViewServerCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" CommandParameter="{StaticResource ServerList_Home}" Style="{StaticResource ServerListItem}" DataContext="{StaticResource ServerList_Home}" GroupName="ServerList"/>
 
             <Border Grid.Row="1" CornerRadius="1" Background="#2D2F32" Margin="10" Width="30" Height="2"/>
 
-            <ItemsControl Grid.Row="2" ItemsSource="{StaticResource serverList}">
+            <!-- Server List -->
+            <ItemsControl x:Name="ServerListControl" Grid.Row="2" ItemsSource="{StaticResource serverList}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <RadioButton GroupName="ServerList" Style="{StaticResource ServerListItem}" Margin="0 0 0 10" Checked="ServerButton_Checked" CommandParameter="{Binding ElementName=ServerItemName, Path=Text}"/>
+                        <RadioButton Command="{Binding DataContext.ViewServerCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" CommandParameter="{Binding}" Style="{StaticResource ServerListItem}" GroupName="ServerList" Margin="0 0 0 10"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Grid>
         
+        <!-- Server Content -->
         <Border Grid.Column="1" Background="#2F3136" CornerRadius="10 0 0 0">
-            <Frame x:Name="ServerView" Source="HomePage.xaml">
+            <Frame x:Name="ServerView" Source="{Binding ServerViewTemplate}">
                 <Frame.Template>
                     <ControlTemplate TargetType="Frame">
-                        <ContentPresenter/>
+                        <ContentPresenter DataContext="{Binding ElementName=ServerListControl, Path=DataContext}"/>
                     </ControlTemplate>
                 </Frame.Template>
             </Frame>

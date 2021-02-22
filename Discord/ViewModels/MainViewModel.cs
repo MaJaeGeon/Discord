@@ -1,3 +1,4 @@
+using Discord.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -20,19 +21,54 @@ namespace Discord.ViewModels
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        //public ICommand MSGCommand { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
         public MainViewModel()
         {
-            //MSGCommand = new RelayCommand<string>(arg => ShowMsg(arg));
+            ViewServerCommand = new RelayCommand<Server>(ViewServer);
         }
 
-        //private void ShowMsg(string arg)
-        //{
-        //    MessageBox.Show(arg);
-        //}
+        #region Properties
+
+        public string ServerViewTemplate
+        {
+            get
+            {
+                return _serverViewTemplate;
+            }
+            set
+            {
+                if (_serverViewTemplate == value) return;
+
+                _serverViewTemplate = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _serverViewTemplate = "HomePage.xaml";
+
+        public Server ServerViewSource
+        {
+            get { return _serverViewSource; }
+            set
+            {
+                if (_serverViewSource == value) return;
+                _serverViewSource = value;
+
+                RaisePropertyChanged();
+            }
+        }
+        private Server _serverViewSource;
+
+        #endregion
+
+        #region Commands
+
+        public RelayCommand<Server> ViewServerCommand { get; }
+
+        private void ViewServer(Server arg)
+        {
+            ServerViewTemplate = arg.Template;
+            ServerViewSource = arg;
+        }
+
+        #endregion
     }
 }

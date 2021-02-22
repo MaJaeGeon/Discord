@@ -18,10 +18,10 @@
                 <models:User Name="Sin Hyung Man" UserState="Online" ImageUrl="https://pbs.twimg.com/profile_images/601706115777212417/0XACs6t8_400x400.jpg"/>
                 <models:User Name="Sin JJang Gu" UserState="Offline" ImageUrl="https://pbs.twimg.com/profile_images/945974115671797761/ALdG7xiF_400x400.jpg"/>
                 <models:User Name="Sin JJang A" UserState="Idle" ImageUrl="https://pbs.twimg.com/profile_images/819890802289623040/PnRWNrtR_400x400.jpg"/>
-                <models:User Name="Bong Mi Sun" UserState="DoNotDisturb" ImageUrl="https://lh3.googleusercontent.com/proxy/NRUF7K4XI5lmTIH0TCBKV5RZGXZ_vEVk26e77pBSdShBqEXEHueQRTIAd4Fs-mhQqhtarDYY5LmVu98xOfwR2bIum0cpuFXxIrHzsPL4jCHCOnNGXW7q1GYk5yTnJLnr3dTSllgcxrRiI_jfh4hPUag"/>
+                <models:User Name="Bong Mi Sun" UserState="DoNotDisturb" ImageUrl="https://lh3.googleusercontent.com/proxy/yptogFfDok0b16OPdCXgWrjo35AHfeqK9SDvAVmenxh-UHpyetNvq1YN1uO1BCjZPs30jrroUjmSqJQPdqrmGA6mTh6MVkfKTdKA13bzmiqkxkg8tXW5LvHB5ze0G5Qh5dB8xPCWO-bMFtZlS8ScqJrh9lIm8_0"/>
             </models:UserList>
 
-            <models:Server x:Key="ServerList_Home" Name="Home" ImageUrl="/Resources/Images/discord_logo.png"/>
+            <models:Server x:Key="ServerList_Home" Name="Home" ImageUrl="/Resources/Images/discord_logo.png" Template="HomePage.xaml"/>
 
             <models:ServerList x:Key="serverList">
                 <models:Server Name="Test1" ImageUrl="https://avatars.githubusercontent.com/u/59637845"/>

@@ -8,6 +8,7 @@ namespace Discord.Models
 {
     public class Server
     {
+        public string Template { get; set; } = "ServerPage.xaml";
         public string Name { get; set; }
         public string ImageUrl { get; set; }
     }
